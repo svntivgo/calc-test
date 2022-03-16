@@ -40,6 +40,34 @@ public class BasicCalculatorTest {
     }
 
     @Test
+    @DisplayName("Testing resta: 4-2=2")
+    public void resta() {
+        // Arrange
+        Long number1 = 4L;
+        Long number2 = 2L;
+        Long expectedValue = 2L;
+
+        // Act
+        Long result = basicCalculator.resta(number1, number2);
+
+        // Assert
+        assertEquals(expectedValue, result);
+    }
+
+    @DisplayName("Testing several subtractions")
+    @ParameterizedTest(name = "{0} - {1} = {2}")
+    @CsvSource({
+            "4,    2,   2",
+            "6,    2,   4",
+            "0,   3,   -3",
+            "3,   3,    0"
+    })
+    public void severalSubtractions(Long first, Long second, Long expectedResult) {
+        assertEquals(expectedResult, basicCalculator.resta(first, second),
+                () -> first + " - " + second + " should equal " + expectedResult);
+    }
+
+    @Test
     @DisplayName("Testing divi: 4/2=2")
     public void divi() {
         // Arrange

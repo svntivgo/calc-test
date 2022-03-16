@@ -12,7 +12,7 @@ public class BasicCalculator {
     }
 
     public Long resta(Long number1, Long number2) {
-        logger.info( "Summing {} - {}", number1, number2 );
+        logger.info( "Subtracting {} - {}", number1, number2 );
         return number1 - number2;
     }
 
