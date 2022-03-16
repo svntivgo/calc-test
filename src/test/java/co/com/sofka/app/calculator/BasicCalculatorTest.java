@@ -68,6 +68,34 @@ public class BasicCalculatorTest {
     }
 
     @Test
+    @DisplayName("Testing mult: 4/2=2")
+    public void mult() {
+        // Arrange
+        Long number1 = 4L;
+        Long number2 = 2L;
+        Long expectedValue = 8L;
+
+        // Act
+        Long result = basicCalculator.mult(number1, number2);
+
+        // Assert
+        assertEquals(expectedValue, result);
+    }
+
+    @DisplayName("Testing several multiplicactions")
+    @ParameterizedTest(name = "{0} * {1} = {2}")
+    @CsvSource({
+            "4,    2,   8",
+            "6,    2,   12",
+            "9,    3,   27",
+            "33,   3,   99"
+    })
+    public void severalMultiplications(Long first, Long second, Long expectedResult) {
+        assertEquals(expectedResult, basicCalculator.mult(first, second),
+                () -> first + " * " + second + " should equal " + expectedResult);
+    }
+
+    @Test
     @DisplayName("Testing divi: 4/2=2")
     public void divi() {
         // Arrange
