@@ -39,5 +39,31 @@ public class BasicCalculatorTest {
                 () -> first + " + " + second + " should equal " + expectedResult);
     }
 
+    @Test
+    @DisplayName("Testing divi: 4/2=2")
+    public void divi() {
+        // Arrange
+        Long number1 = 4L;
+        Long number2 = 2L;
+        Long expectedValue = 2L;
 
+        // Act
+        Long result = basicCalculator.divi(number1, number2);
+
+        // Assert
+        assertEquals(expectedValue, result);
+    }
+
+    @DisplayName("Testing several divs")
+    @ParameterizedTest(name = "{0} / {1} = {2}")
+    @CsvSource({
+            "4,    2,   2",
+            "6,    2,   3",
+            "90,   3,  30",
+            "33,  11,   3"
+    })
+    public void severalDivs(Long first, Long second, Long expectedResult) {
+        assertEquals(expectedResult, basicCalculator.divi(first, second),
+                () -> first + " / " + second + " should equal " + expectedResult);
+    }
 }

@@ -22,7 +22,7 @@ public class BasicCalculator {
     }
 
     public Long divi(Long number1, Long number2) {
-        logger.info( "Summing {} / {}", number1, number2 );
+        logger.info( "Dividing {} / {}", number1, number2 );
         return number1 / number2;
     }
 }
